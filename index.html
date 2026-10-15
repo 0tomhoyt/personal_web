@@ -1,39 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>侯宇腾 / Hou Yuteng</title>
-    <meta name="description" content="Personal site of Hou Yuteng.">
+    <meta name="description" content="侯宇腾 / Hou Yuteng 的个人网站。">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="wrap">
       <header>
-        <p class="kicker">Personal site</p>
+        <p class="kicker">个人网站</p>
         <h1>侯宇腾</h1>
         <p class="name-en">Hou Yuteng</p>
-        <nav aria-label="Page">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
+        <p class="affiliation">KU Leuven · 哈尔滨工业大学</p>
+        <nav aria-label="页面">
+          <a href="#about">关于</a>
+          <a href="#projects">项目</a>
+          <a href="#contact">联系</a>
         </nav>
       </header>
 
       <main>
         <section id="about">
-          <h2>About</h2>
-          <p>A short introduction will go here.</p>
+          <h2>关于</h2>
+          <p>公开简介里写着 KU Leuven 和哈尔滨工业大学。公开仓库里的工作主要围绕 AI agent、模型部署，以及大模型论文笔记。</p>
         </section>
 
         <section id="projects">
-          <h2>Projects</h2>
-          <p>Selected projects will be listed here.</p>
+          <h2>项目</h2>
+          <p class="lead">从公开仓库里选了几项。</p>
+          <ul class="projects">
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/cannbot-gateway-proxy">cannbot-gateway-proxy</a>
+                <span class="lang">JavaScript</span>
+              </div>
+              <p>把 CANNBot 网关封装成本地 API，兼容 OpenAI 与 Anthropic 的调用方式。</p>
+            </li>
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/cpu_model_deploy">cpu_model_deploy</a>
+                <span class="lang">C++</span>
+              </div>
+              <p>Qwen3.6-35B-A3B 在鲲鹏 920 上的离线部署。</p>
+            </li>
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/agent_remote">agent_remote</a>
+                <span class="lang">Python</span>
+              </div>
+              <p>给 AI 辅助开发用的远端执行框架：编译机提交，执行机拉取并回传结果。</p>
+            </li>
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/gemmtest">gemmtest</a>
+                <span class="lang">C++</span>
+              </div>
+              <p>在 macOS 与 ARM64 服务器上做 GEMM 数值正确性测试。</p>
+            </li>
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/LLM_papers">LLM_papers</a>
+                <span class="lang">笔记</span>
+              </div>
+              <p>按主题整理的大模型论文中文阅读笔记。</p>
+            </li>
+            <li>
+              <div class="project-head">
+                <a href="https://github.com/0tomhoyt/agent_knowledge">agent_knowledge</a>
+                <span class="lang">HTML</span>
+              </div>
+              <p>知识库管理系统。</p>
+            </li>
+          </ul>
         </section>
 
         <section id="contact">
-          <h2>Contact</h2>
-          <p>A way to get in touch will be added here.</p>
+          <h2>联系</h2>
+          <p>GitHub 是目前公开的联系方式。</p>
+          <p class="contact-link"><a href="https://github.com/0tomhoyt">github.com/0tomhoyt</a></p>
         </section>
       </main>
 

@@ -19,8 +19,8 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  line-height: 1.6;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti SC", "Noto Serif SC", Georgia, serif;
+  line-height: 1.65;
 }
 
 .wrap {
@@ -31,7 +31,7 @@ body {
 
 .kicker {
   margin: 0 0 1.25rem;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: ui-sans-serif, "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -46,9 +46,10 @@ h1 {
   letter-spacing: 0.06em;
 }
 
-.name-en {
-  margin: 0.45rem 0 0;
-  font-size: 1.25rem;
+.name-en,
+.affiliation {
+  margin: 0.35rem 0 0;
+  font-size: 1.15rem;
   color: var(--muted);
 }
 
@@ -57,31 +58,40 @@ nav {
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1.75rem;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-family: ui-sans-serif, "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
   font-size: 0.95rem;
 }
 
-nav a {
+a {
   color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+nav a {
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 
 nav a:hover,
-nav a:focus-visible {
+nav a:focus-visible,
+.project-head a:hover,
+.project-head a:focus-visible,
+.contact-link a:hover,
+.contact-link a:focus-visible {
   color: var(--accent);
   border-bottom-color: var(--accent);
   outline: none;
 }
 
 main section {
-  padding: 1.75rem 0;
+  padding: 1.75rem 0 0.25rem;
   border-top: 1px solid var(--line);
 }
 
 h2 {
-  margin: 0 0 0.55rem;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  margin: 0 0 0.7rem;
+  font-family: ui-sans-serif, "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -93,8 +103,65 @@ main p {
   font-size: 1.125rem;
 }
 
+.lead {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.projects {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.projects li {
+  padding: 1.05rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.projects li:last-child {
+  padding-bottom: 0.15rem;
+}
+
+.project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.project-head a {
+  color: var(--ink);
+  font-size: 1.12rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.lang {
+  flex-shrink: 0;
+  font-family: ui-sans-serif, "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.projects p {
+  margin-top: 0.3rem;
+  font-size: 1.02rem;
+}
+
+.contact-link {
+  margin-top: 0.55rem;
+}
+
+.contact-link a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
 footer {
-  margin-top: 0.5rem;
+  margin-top: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
@@ -103,4 +170,11 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+@media (max-width: 420px) {
+  .project-head {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
 }
