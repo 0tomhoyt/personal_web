@@ -1,0 +1,106 @@
+:root {
+  --bg: #f4f1eb;
+  --ink: #1f1c18;
+  --muted: #6f675f;
+  --line: #ddd6cc;
+  --accent: #8d3b2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3rem;
+}
+
+.kicker {
+  margin: 0 0 1.25rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(2.75rem, 8vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+}
+
+.name-en {
+  margin: 0.45rem 0 0;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+
+nav a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+main section {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  margin: 0 0 0.55rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+main p {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+footer {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+footer p {
+  margin: 0;
+}
