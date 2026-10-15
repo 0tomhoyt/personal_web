@@ -4,87 +4,149 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>侯宇腾 / Hou Yuteng</title>
-    <meta name="description" content="侯宇腾 / Hou Yuteng 的个人网站。">
+    <meta name="description" content="侯宇腾 / Hou Yuteng 的个人网站，关注 AI agent、模型部署与系统工程。">
+    <meta name="theme-color" content="#f2efe8">
+    <meta property="og:title" content="侯宇腾 / Hou Yuteng">
+    <meta property="og:description" content="AI agent、模型部署与系统工程。">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <p class="kicker">个人网站</p>
-        <h1>侯宇腾</h1>
-        <p class="name-en">Hou Yuteng</p>
-        <p class="affiliation">KU Leuven · 哈尔滨工业大学</p>
-        <nav aria-label="页面">
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="page">
+      <header class="site-header">
+        <a class="wordmark" href="#" aria-label="返回页面顶部">HY</a>
+        <nav aria-label="主导航">
           <a href="#about">关于</a>
           <a href="#projects">项目</a>
           <a href="#contact">联系</a>
         </nav>
       </header>
 
-      <main>
-        <section id="about">
-          <h2>关于</h2>
-          <p>公开简介里写着 KU Leuven 和哈尔滨工业大学。公开仓库里的工作主要围绕 AI agent、模型部署，以及大模型论文笔记。</p>
+      <main id="main">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Personal website · 个人网站</p>
+            <h1 id="page-title">侯宇腾<span>Hou Yuteng</span></h1>
+            <p class="intro">关注 AI agent、模型部署与系统工程，持续把想法做成可以运行的工具。</p>
+            <div class="hero-links">
+              <a class="button button-primary" href="#projects">查看项目</a>
+              <a class="button" href="mailto:tomhoyt88@gmail.com">给我邮件</a>
+            </div>
+          </div>
+          <div class="hero-mark" aria-hidden="true">
+            <span>侯</span>
+            <small>YUTENG HOU</small>
+          </div>
         </section>
 
-        <section id="projects">
-          <h2>项目</h2>
-          <p class="lead">从公开仓库里选了几项。</p>
-          <ul class="projects">
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/cannbot-gateway-proxy">cannbot-gateway-proxy</a>
-                <span class="lang">JavaScript</span>
-              </div>
-              <p>把 CANNBot 网关封装成本地 API，兼容 OpenAI 与 Anthropic 的调用方式。</p>
-            </li>
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/cpu_model_deploy">cpu_model_deploy</a>
-                <span class="lang">C++</span>
-              </div>
-              <p>Qwen3.6-35B-A3B 在鲲鹏 920 上的离线部署。</p>
-            </li>
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/agent_remote">agent_remote</a>
-                <span class="lang">Python</span>
-              </div>
-              <p>给 AI 辅助开发用的远端执行框架：编译机提交，执行机拉取并回传结果。</p>
-            </li>
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/gemmtest">gemmtest</a>
-                <span class="lang">C++</span>
-              </div>
-              <p>在 macOS 与 ARM64 服务器上做 GEMM 数值正确性测试。</p>
-            </li>
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/LLM_papers">LLM_papers</a>
-                <span class="lang">笔记</span>
-              </div>
-              <p>按主题整理的大模型论文中文阅读笔记。</p>
-            </li>
-            <li>
-              <div class="project-head">
-                <a href="https://github.com/0tomhoyt/agent_knowledge">agent_knowledge</a>
-                <span class="lang">HTML</span>
-              </div>
-              <p>知识库管理系统。</p>
-            </li>
-          </ul>
+        <section class="section about" id="about" aria-labelledby="about-title">
+          <div class="section-label">
+            <p>01</p>
+            <h2 id="about-title">关于</h2>
+          </div>
+          <div class="section-content">
+            <p class="statement">公开简介里写着 KU Leuven 和哈尔滨工业大学。公开仓库里的工作主要围绕 AI agent、模型部署，以及大模型论文笔记。</p>
+            <ul class="focus-list" aria-label="关注方向">
+              <li>
+                <span>01</span>
+                <strong>AI Agent</strong>
+                <p>工具调用、远端执行与智能体工作流</p>
+              </li>
+              <li>
+                <span>02</span>
+                <strong>模型部署</strong>
+                <p>本地推理、ARM 平台与性能验证</p>
+              </li>
+              <li>
+                <span>03</span>
+                <strong>系统工程</strong>
+                <p>把实验原型连接成可使用的系统</p>
+              </li>
+            </ul>
+          </div>
         </section>
 
-        <section id="contact">
-          <h2>联系</h2>
-          <p class="contact-link"><a href="mailto:tomhoyt88@gmail.com">tomhoyt88@gmail.com</a></p>
-          <p class="contact-link"><a href="https://github.com/0tomhoyt">github.com/0tomhoyt</a></p>
+        <section class="section" id="projects" aria-labelledby="projects-title">
+          <div class="section-label">
+            <p>02</p>
+            <h2 id="projects-title">项目</h2>
+          </div>
+          <div class="section-content">
+            <div class="section-heading">
+              <p class="statement">一些公开项目</p>
+              <a href="https://github.com/0tomhoyt?tab=repositories">查看全部仓库 <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="projects">
+              <a class="project featured" href="https://github.com/0tomhoyt/cannbot-gateway-proxy">
+                <span class="project-number">01</span>
+                <div>
+                  <h3>cannbot-gateway-proxy</h3>
+                  <p>把 CANNBot 网关封装成本地 API，兼容 OpenAI 与 Anthropic 的调用方式。</p>
+                </div>
+                <span class="project-meta">JavaScript <i aria-hidden="true">↗</i></span>
+              </a>
+              <a class="project" href="https://github.com/0tomhoyt/cpu_model_deploy">
+                <span class="project-number">02</span>
+                <div>
+                  <h3>cpu_model_deploy</h3>
+                  <p>Qwen3.6-35B-A3B 在鲲鹏 920 上的离线部署。</p>
+                </div>
+                <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
+              </a>
+              <a class="project" href="https://github.com/0tomhoyt/agent_remote">
+                <span class="project-number">03</span>
+                <div>
+                  <h3>agent_remote</h3>
+                  <p>面向 AI 辅助开发的远端执行框架：提交任务、拉取执行并回传结果。</p>
+                </div>
+                <span class="project-meta">Python <i aria-hidden="true">↗</i></span>
+              </a>
+              <a class="project" href="https://github.com/0tomhoyt/gemmtest">
+                <span class="project-number">04</span>
+                <div>
+                  <h3>gemmtest</h3>
+                  <p>在 macOS 与 ARM64 服务器上做 GEMM 数值正确性测试。</p>
+                </div>
+                <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
+              </a>
+              <a class="project" href="https://github.com/0tomhoyt/LLM_papers">
+                <span class="project-number">05</span>
+                <div>
+                  <h3>LLM_papers</h3>
+                  <p>按主题整理的大模型论文中文阅读笔记。</p>
+                </div>
+                <span class="project-meta">Notes <i aria-hidden="true">↗</i></span>
+              </a>
+              <a class="project" href="https://github.com/0tomhoyt/agent_knowledge">
+                <span class="project-number">06</span>
+                <div>
+                  <h3>agent_knowledge</h3>
+                  <p>知识库管理系统。</p>
+                </div>
+                <span class="project-meta">HTML <i aria-hidden="true">↗</i></span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section contact" id="contact" aria-labelledby="contact-title">
+          <div class="section-label">
+            <p>03</p>
+            <h2 id="contact-title">联系</h2>
+          </div>
+          <div class="section-content contact-content">
+            <p class="eyebrow">Say hello · 保持联系</p>
+            <p class="contact-title">有想法或想聊聊？<br>欢迎发来邮件。</p>
+            <a class="email" href="mailto:tomhoyt88@gmail.com">tomhoyt88@gmail.com <span aria-hidden="true">↗</span></a>
+            <a class="github-link" href="https://github.com/0tomhoyt">GitHub · @0tomhoyt <span aria-hidden="true">↗</span></a>
+          </div>
         </section>
       </main>
 
       <footer>
         <p>侯宇腾 / Hou Yuteng</p>
+        <p>Designed with restraint · 2026</p>
       </footer>
     </div>
   </body>
