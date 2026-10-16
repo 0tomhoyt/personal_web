@@ -1,9 +1,10 @@
 /* Kernel Zoo — an animated look at how different hardware eats the same
    C = A·B. Chapter 1 ships three scenes:
-     1. the race — one 24×24 C matrix filled by scalar, SIMD and GPU
-        cursors, cell / VL-strip / 6×6-tile at a time. Speeds are schematic
-        ratios; the scalar lane is annotated with the visitor's measured
-        GFLOPS when a bench run exists.
+     1. the race — one 24×24 C matrix filled by scalar, SVE and SME
+        cursors, cell / VL-strip / VL×VL-tile at a time. Speeds are
+        schematic ratios (FMAs per beat: 1 / 8 / 64); the scalar lane is
+        annotated with the visitor's measured GFLOPS when a bench run
+        exists.
      2. inside the scalar machine — naive dot products vs 4×4 register
         blocking, counted in loads and FMAs.
      3. an SVE vector — one fmla lighting VL lanes at once, with p0
@@ -32,7 +33,7 @@
       "title": "Kernel Zoo",
       "chapter": "Chapter 1 · GEMM",
       "close": "Close the kernel zoo",
-      "tag": "Same C = A·B, three machines, very different appetites.",
+      "tag": "Same C = A·B, three ways to eat it: one cell, one strip, one tile.",
       "tab.race": "the race",
       "tab.scalar": "scalar CPU",
       "tab.sve": "an SVE vector",
@@ -43,22 +44,21 @@
       "step": "step",
       "replay": "replay",
       "hint.reduced": "autoplay is off (reduced motion) — step through instead.",
-      "race.note": "Fill speeds are schematic ratios; only the order in which cells appear is honest. SIMD and GPU get their measured kernels in a later chapter.",
-      "race.noteMeasured": "Fill speeds are schematic ratios; the scalar lane stands on your measured {g} GFLOPS (FP64, N=384). SIMD and GPU get their measured kernels in a later chapter.",
+      "race.note": "Fill speeds are schematic ratios; what stays honest is the order in which cells appear. Measured kernels land in a later chapter.",
+      "race.noteMeasured": "Fill speeds are schematic ratios; the scalar lane stands on your measured {g} GFLOPS (FP64, N=384). Measured kernels land in a later chapter.",
       "race.lane.scalar": "scalar JS",
       "race.lane.simd": "SVE-style SIMD",
-      "race.lane.gpu": "GPU wavefront",
+      "race.lane.sme": "SME outer product",
       "race.sub.scalar": "one dot product at a time — 1 cell / beat",
       "race.sub.simd": "one fmla per beat — {n} cells / beat",
-      "race.sub.gpu": "a wavefront lands a 6×6 tile / beat",
+      "race.sub.sme": "fmopa accumulates a 2D ZA tile — {n} cells / beat",
       "race.badge.measured": "measured",
       "race.badge.schematic": "schematic",
       "race.badge.slowed": "slowed ×{f}",
       "race.status": "filling…",
       "race.done": "finished in {s}s · ×{r} vs scalar",
       "race.pct": "{p}% of C",
-      "race.said": "Two orders of magnitude, one matrix.",
-      "sc.heading": "One ALU, two kernels",
+      "race.said": "From one cell a beat to a whole tile a beat.",
       "sc.mode.naive": "naive",
       "sc.mode.blocked": "4×4 blocking",
       "sc.loads": "loads",
@@ -88,7 +88,7 @@
       "title": "算子动物园",
       "chapter": "第一章 · GEMM",
       "close": "关闭算子动物园",
-      "tag": "同一个 C = A·B，三台机器，胃口大不相同。",
+      "tag": "同一个 C = A·B，三种吃法：一格、一排、一整块。",
       "tab.race": "赛跑",
       "tab.scalar": "标量 CPU",
       "tab.sve": "SVE 向量",
@@ -99,22 +99,21 @@
       "step": "步进",
       "replay": "重放",
       "hint.reduced": "已按「减少动态」停用自动播放——用步进逐帧看。",
-      "race.note": "填充速度是示意比例；诚实的只有出格子的顺序。SIMD 和 GPU 的实测内核在后面的章节。",
-      "race.noteMeasured": "填充速度是示意比例；标量这条以你设备的实测 {g} GFLOPS（FP64，N=384）为基准。SIMD 和 GPU 的实测内核在后面的章节。",
+      "race.note": "填充速度是示意比例；诚实的是出格子的顺序。实测内核在后面的章节。",
+      "race.noteMeasured": "填充速度是示意比例；标量这条以你设备的实测 {g} GFLOPS（FP64，N=384）为基准。实测内核在后面的章节。",
       "race.lane.scalar": "标量 JS",
       "race.lane.simd": "SVE 式 SIMD",
-      "race.lane.gpu": "GPU 波前",
+      "race.lane.sme": "SME 外积",
       "race.sub.scalar": "一次一个点积——每拍 1 格",
       "race.sub.simd": "一拍一条 fmla——每拍 {n} 格",
-      "race.sub.gpu": "一个波前落一块 6×6 tile",
+      "race.sub.sme": "fmopa 累加二维 ZA tile——每拍 {n} 格",
       "race.badge.measured": "实测",
       "race.badge.schematic": "示意",
       "race.badge.slowed": "放慢 ×{f}",
       "race.status": "填充中…",
       "race.done": "{s}s 完成 · 相对标量 ×{r}",
       "race.pct": "C 的 {p}%",
-      "race.said": "两个数量级，一个矩阵。",
-      "sc.heading": "一条 ALU，两种内核",
+      "race.said": "从一拍一格，到一拍一整块 tile。",
       "sc.mode.naive": "朴素",
       "sc.mode.blocked": "4×4 分块",
       "sc.loads": "访存次数",
@@ -267,6 +266,8 @@
       root.classList.add("open");
       applyLang(); /* re-render: the bench may have run since the last open */
       showTab(active);
+      var closeBtn = root.querySelector(".zoo-close");
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
     }
   }
 
@@ -376,10 +377,10 @@
   var RACE_N = 24;
   var RACE_CELLS = RACE_N * RACE_N;
   var RACE_SECONDS = 8; /* the scalar lane takes this long to fill C */
-  var RACE_VL = 8; /* schematic SIMD width: 256-bit .s */
-  var RACE_BLOCK = 6; /* schematic GPU: 6×6 tiles, 16 of them */
-  var GPU_RATIO = 1000; /* any discrete GPU vs scalar JS, schematic */
-  var GPU_MIN_SECONDS = 1.4; /* clamp so the wavefront is visible at all */
+  var RACE_VL = 8; /* schematic SVE width: 256-bit .s */
+  var SME_VL = 8; /* schematic SME tile: a VL×VL outer product */
+  var SME_RATIO = SME_VL * SME_VL; /* 64 FMAs per fmopa vs 1 per scalar beat */
+  var RACE_MIN_SECONDS = 1.4; /* clamp so the SME tiles are visible at all */
 
   var race = (function () {
     var host = null;
@@ -393,14 +394,12 @@
     var playing = false;
     var doneShown = false;
 
-    function blockOrder() {
-      /* diagonal sweep, like a wavefront claiming tiles */
+    function tileOrder() {
+      /* an fmopa chain finishes one VL×VL C tile; row-major over the 3×3 grid */
       var order = [];
-      for (var d = 0; d <= 6; d++) {
-        for (var bx = 0; bx < 4; bx++) {
-          var by = d - bx;
-          if (by >= 0 && by < 4) order.push({ x: bx, y: by });
-        }
+      var span = RACE_N / SME_VL;
+      for (var by = 0; by < span; by++) {
+        for (var bx = 0; bx < span; bx++) order.push({ x: bx, y: by });
       }
       return order;
     }
@@ -420,11 +419,11 @@
           seconds: RACE_SECONDS / RACE_VL
         },
         {
-          id: "gpu",
+          id: "sme",
           color: "#cf4d2f",
-          quant: RACE_BLOCK * RACE_BLOCK,
-          seconds: Math.max(RACE_SECONDS / GPU_RATIO, GPU_MIN_SECONDS),
-          blocks: blockOrder()
+          quant: SME_VL * SME_VL,
+          seconds: Math.max(RACE_SECONDS / SME_RATIO, RACE_MIN_SECONDS),
+          blocks: tileOrder()
         }
       ];
     }
@@ -436,13 +435,13 @@
     }
 
     function eachRevealed(lane, count, fn) {
-      if (lane.id === "gpu") {
-        var blocks = Math.floor(count / lane.quant);
-        for (var b = 0; b < blocks && b < lane.blocks.length; b++) {
+      if (lane.id === "sme") {
+        var tiles = Math.floor(count / lane.quant);
+        for (var b = 0; b < tiles && b < lane.blocks.length; b++) {
           var blk = lane.blocks[b];
-          for (var y = 0; y < RACE_BLOCK; y++) {
-            for (var x = 0; x < RACE_BLOCK; x++) {
-              fn((blk.y * RACE_BLOCK + y) * RACE_N + blk.x * RACE_BLOCK + x, b === blocks - 1);
+          for (var y = 0; y < SME_VL; y++) {
+            for (var x = 0; x < SME_VL; x++) {
+              fn((blk.y * SME_VL + y) * RACE_N + blk.x * SME_VL + x, b === tiles - 1);
             }
           }
         }
@@ -482,7 +481,7 @@
         lane.pct.textContent = fmt(t("race.pct"), { p: pct });
         if (count >= RACE_CELLS) {
           lane.node.classList.add("zo-done");
-          var ratio = lane.id === "scalar" ? 1 : lane.id === "simd" ? RACE_VL : GPU_RATIO;
+          var ratio = lane.id === "scalar" ? 1 : lane.id === "simd" ? RACE_VL : SME_RATIO;
           lane.status.textContent = fmt(t("race.done"), {
             s: lane.seconds < 0.1 ? "<0.1" : lane.seconds.toFixed(1).replace(/\.0$/, ""),
             r: ratio
@@ -651,14 +650,16 @@
       }
       hint.textContent = t("hint.reduced");
       lanes.forEach(function (lane) {
-        lane.sub.textContent = fmt(t("race.sub." + lane.id), { n: RACE_VL });
+        lane.sub.textContent = fmt(t("race.sub." + lane.id), {
+          n: lane.id === "sme" ? SME_RATIO : RACE_VL
+        });
         var schematic = lane.id !== "scalar" || !measured;
         lane.badge.textContent = schematic ? t("race.badge.schematic") : t("race.badge.measured");
         lane.badge.className = "zoo-badge " + (schematic ? "zo-bad-schematic" : "zo-bad-measured");
-        var ratio = lane.id === "scalar" ? 1 : lane.id === "simd" ? RACE_VL : GPU_RATIO;
+        var ratio = lane.id === "scalar" ? 1 : lane.id === "simd" ? RACE_VL : SME_RATIO;
         lane.speed.textContent = "×" + ratio;
-        if (lane.id === "gpu") {
-          var slowed = Math.round(GPU_MIN_SECONDS / (RACE_SECONDS / GPU_RATIO));
+        if (lane.id === "sme") {
+          var slowed = Math.round(RACE_MIN_SECONDS / (RACE_SECONDS / SME_RATIO));
           lane.extra.textContent = fmt(t("race.badge.slowed"), { f: slowed });
           lane.extra.hidden = false;
         } else {
@@ -891,7 +892,7 @@
       var isNaive = mode === "naive";
       host.querySelector("#zsc-mem").style.display = isNaive ? "" : "none";
       host.querySelector("#zsc-wmem").style.display = isNaive ? "" : "none";
-      host.querySelectorAll('[id^="zsc-r"]').forEach(function (n) {
+      host.querySelectorAll(".z-reg").forEach(function (n) {
         n.style.display = isNaive ? "none" : "";
       });
       host.querySelector("#zsc-rlab").textContent = t(isNaive ? "sc.memlabel" : "sc.reglabel");

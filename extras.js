@@ -210,7 +210,7 @@
         "cat <file>        education.md · paper.md · contact.txt\n" +
         "neofetch          the machine introduces itself\n" +
         "gemm              run a small FP64 GEMM benchmark\n" +
-        "zoo               how three machines eat one GEMM\n" +
+        "zoo               how one GEMM gets eaten three ways\n" +
         "sudo <cmd>        try your luck\n" +
         "clear · exit      housekeeping",
       whoami: "guest (read-only access; curiosity assumed)",
@@ -257,7 +257,7 @@
         "cat <文件>        education.md · paper.md · contact.txt\n" +
         "neofetch          让这台机器自我介绍\n" +
         "gemm              跑一个小的 FP64 GEMM 基准测试\n" +
-        "zoo               三台机器怎么吃同一个 GEMM\n" +
+        "zoo               同一个 GEMM 的三种吃法\n" +
         "sudo <命令>       碰碰运气\n" +
         "clear · exit      收尾",
       whoami: "guest（只读权限；默认你有点好奇）",
