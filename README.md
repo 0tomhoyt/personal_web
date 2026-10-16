@@ -1,6 +1,8 @@
 # personal_web
 
-侯宇腾 / Hou Yuteng 的个人网站。静态页面：`index.html` 与 `styles.css`。
+侯宇腾 / Hou Yuteng 的个人网站。静态页面：`index.html`、`styles.css` 与 `i18n.js`。
+
+默认语言是英文。页眉的 EN / 中文 切换整页文案，不刷新页面，选择记在 `localStorage`（`site-lang`）。中文沿用原先的公开简介。
 
 ## 内容来源
 
