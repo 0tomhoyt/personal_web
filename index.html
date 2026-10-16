@@ -3,12 +3,43 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>侯宇腾 / Hou Yuteng</title>
-    <meta name="description" content="侯宇腾 / Hou Yuteng 的个人网站，关注 AI agent、模型部署与系统工程。">
+    <title>侯宇腾 / Hou Yuteng · ARM 与可运行的 AI 系统</title>
+    <meta name="description" content="侯宇腾（Hou Yuteng），哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。方向是 ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
     <meta name="theme-color" content="#f2efe8">
+    <link rel="canonical" href="https://personal-web-swart-zeta.vercel.app">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta property="og:title" content="侯宇腾 / Hou Yuteng">
-    <meta property="og:description" content="AI agent、模型部署与系统工程。">
+    <meta property="og:description" content="哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://personal-web-swart-zeta.vercel.app">
+    <meta property="og:image" content="https://personal-web-swart-zeta.vercel.app/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="侯宇腾 / Hou Yuteng，ARM、HPC 与可运行的 AI 系统">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="侯宇腾 / Hou Yuteng">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="侯宇腾 / Hou Yuteng">
+    <meta name="twitter:description" content="ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
+    <meta name="twitter:image" content="https://personal-web-swart-zeta.vercel.app/og.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "侯宇腾",
+        "alternateName": "Hou Yuteng",
+        "url": "https://personal-web-swart-zeta.vercel.app",
+        "email": "mailto:tomhoyt88@gmail.com",
+        "sameAs": ["https://github.com/0tomhoyt"],
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "哈尔滨工业大学（深圳）" },
+          { "@type": "CollegeOrUniversity", "name": "KU Leuven" }
+        ],
+        "knowsAbout": ["ARM SME", "ARM SVE", "UniGEMM", "GEMM", "Attention", "HPC", "AI agents", "model deployment"]
+      }
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -28,7 +59,7 @@
           <div class="hero-copy">
             <p class="eyebrow">Personal website · 个人网站</p>
             <h1 id="page-title">侯宇腾<span>Hou Yuteng</span></h1>
-            <p class="intro">关注 AI agent、模型部署与系统工程，持续把想法做成可以运行的工具。</p>
+            <p class="intro">做 ARM SME/SVE 上的高性能算子，也做能跑起来的 AI 系统。毕业于哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。</p>
             <div class="hero-links">
               <a class="button button-primary" href="#projects">查看项目</a>
               <a class="button" href="mailto:tomhoyt88@gmail.com">给我邮件</a>
@@ -46,24 +77,51 @@
             <h2 id="about-title">关于</h2>
           </div>
           <div class="section-content">
-            <p class="statement">公开简介里写着 KU Leuven 和哈尔滨工业大学。公开仓库里的工作主要围绕 AI agent、模型部署，以及大模型论文笔记。</p>
+            <p class="statement">在 ARM SME/SVE 上做 GEMM 与 Attention，也把 HPC、AI agent 和模型部署收成可以运行的系统。</p>
             <ul class="focus-list" aria-label="关注方向">
               <li>
                 <span>01</span>
+                <strong>ARM / HPC</strong>
+                <p>SME/SVE 上的 UniGEMM、GEMM 与 Attention</p>
+              </li>
+              <li>
+                <span>02</span>
                 <strong>AI Agent</strong>
                 <p>工具调用、远端执行与智能体工作流</p>
               </li>
               <li>
-                <span>02</span>
+                <span>03</span>
                 <strong>模型部署</strong>
                 <p>本地推理、ARM 平台与性能验证</p>
               </li>
-              <li>
-                <span>03</span>
-                <strong>系统工程</strong>
-                <p>把实验原型连接成可使用的系统</p>
-              </li>
             </ul>
+            <div class="facts">
+              <div>
+                <h3>教育</h3>
+                <ul>
+                  <li><span>2019–2024</span>哈尔滨工业大学（深圳） · 电子与信息工程学士</li>
+                  <li><span>2021–2023</span>KU Leuven · 工程科技学士，联合培养</li>
+                  <li><span>2023–2024</span>KU Leuven · 工程科技硕士，软件系统 · Cum Laude</li>
+                </ul>
+              </div>
+              <div>
+                <h3>经历</h3>
+                <ul>
+                  <li><span>2025–今</span>ARM SME/SVE 上的 UniGEMM / GEMM 与 Attention：多精度汇编生成，核心 GEMM 内核到理论峰值的 95% 以上，并优化多种 Attention 的访存与计算。</li>
+                  <li><span>同期</span>HPC 场景里的 MPI / UCX 性能工作，以及 KBLAS、Eigen 的维护。</li>
+                  <li><span>2023–2024</span>模型部署之后的稳定性：监控输入分布和输出异常，减少 concept drift。</li>
+                </ul>
+              </div>
+              <div>
+                <h3>论文</h3>
+                <ul>
+                  <li>
+                    <a href="https://doi.org/10.56028/aemr.8.1.298.2023">Data Augmentation Using Language Models for Event-Driven Stock Prediction Sentiment Analysis</a>
+                    <small>AEMR, 2023 · DOI 10.56028/aemr.8.1.298.2023</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -82,7 +140,7 @@
                 <span class="project-number">01</span>
                 <div>
                   <h3>cannbot-gateway-proxy</h3>
-                  <p>把 CANNBot 网关封装成本地 API，兼容 OpenAI 与 Anthropic 的调用方式。</p>
+                  <p>把 CANNBot 网关收成本地 API。OpenAI 请求原样透传，Anthropic Messages 做双向翻译，调用时再注入凭证，本机 agent 不必把密钥写进配置。自带管理台，可看用量和 TTFT、TPOT 等延迟。</p>
                 </div>
                 <span class="project-meta">JavaScript <i aria-hidden="true">↗</i></span>
               </a>
@@ -90,7 +148,7 @@
                 <span class="project-number">02</span>
                 <div>
                   <h3>cpu_model_deploy</h3>
-                  <p>Qwen3.6-35B-A3B 在鲲鹏 920 上的离线部署。</p>
+                  <p>Qwen3.6-35B-A3B 在鲲鹏 920（ARM CPU）上的离线部署。基于 llama.cpp 编译运行，不依赖 Python。</p>
                 </div>
                 <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
               </a>
@@ -98,7 +156,7 @@
                 <span class="project-number">03</span>
                 <div>
                   <h3>agent_remote</h3>
-                  <p>面向 AI 辅助开发的远端执行框架：提交任务、拉取执行并回传结果。</p>
+                  <p>给 AI 辅助开发用的远端执行框架。编译机提交任务和产物，执行机上的 worker 拉取运行并回传日志；两边网络不通时，用中转队列接力。</p>
                 </div>
                 <span class="project-meta">Python <i aria-hidden="true">↗</i></span>
               </a>
@@ -106,7 +164,7 @@
                 <span class="project-number">04</span>
                 <div>
                   <h3>gemmtest</h3>
-                  <p>在 macOS 与 ARM64 服务器上做 GEMM 数值正确性测试。</p>
+                  <p>核对 ARM 上 GEMM 的数值是否正确。同一套代码覆盖 macOS 开发机和 ARM64 服务器，可用编译开关切到 HBM，对照 FP32、FP16 和 BF16。</p>
                 </div>
                 <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
               </a>
@@ -114,7 +172,7 @@
                 <span class="project-number">05</span>
                 <div>
                   <h3>LLM_papers</h3>
-                  <p>按主题整理的大模型论文中文阅读笔记。</p>
+                  <p>按主题整理的大模型论文中文阅读笔记，从综述写到架构与训练，并解释难懂的概念。</p>
                 </div>
                 <span class="project-meta">Notes <i aria-hidden="true">↗</i></span>
               </a>
@@ -122,7 +180,7 @@
                 <span class="project-number">06</span>
                 <div>
                   <h3>agent_knowledge</h3>
-                  <p>知识库管理系统。</p>
+                  <p>中文技术笔记库。同一主题按设计说明、大纲和成稿分层；目前写的是 Agent 时代的 CPU 底层软件，数字带出处。</p>
                 </div>
                 <span class="project-meta">HTML <i aria-hidden="true">↗</i></span>
               </a>
@@ -139,7 +197,7 @@
             <p class="eyebrow">Say hello · 保持联系</p>
             <p class="contact-title">有想法或想聊聊？<br>欢迎发来邮件。</p>
             <a class="email" href="mailto:tomhoyt88@gmail.com">tomhoyt88@gmail.com <span aria-hidden="true">↗</span></a>
-            <a class="github-link" href="https://github.com/0tomhoyt">GitHub · @0tomhoyt <span aria-hidden="true">↗</span></a>
+            <a class="github-link" href="https://github.com/0tomhoyt" rel="me">GitHub · @0tomhoyt <span aria-hidden="true">↗</span></a>
           </div>
         </section>
       </main>
