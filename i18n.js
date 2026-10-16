@@ -29,6 +29,7 @@
         "High-performance kernels on ARM SME/SVE, and AI systems that actually run. Graduated from Harbin Institute of Technology, Shenzhen, and KU Leuven (Cum Laude).",
       "hero.projects": "View projects",
       "hero.email": "Email me",
+      "hero.bench": "bench this device",
       "about.title": "About",
       "about.lead":
         "GEMM and attention on ARM SME/SVE, and HPC, AI agents, and model deployment brought together into systems that run.",
@@ -70,7 +71,14 @@
       "contact.title": "Contact",
       "contact.eyebrow": "Say hello",
       "contact.lead": "Have an idea, or want to talk?<br>Send a note.",
-      "footer.name": "Hou Yuteng / 侯宇腾"
+      "footer.name": "Hou Yuteng / 侯宇腾",
+      "footer.bench": "run a kernel",
+      "footer.benchRun": "computing…",
+      "footer.benchFmt": "{g} GFLOPS ≈ {p}% of an M4 P-core",
+      "footer.benchTip": "FP64 GEMM, N=384, best of 3, single thread, scalar JavaScript — no SIMD, so a few percent of the hardware peak is normal. Reference: M4 P-core FP64 peak ≈ 35 GFLOPS.",
+      "footer.term": "Open terminal (or press ~)",
+      "term.label": "Terminal",
+      "term.close": "Close terminal"
     },
     zh: {
       "meta.title": "侯宇腾 / Hou Yuteng · ARM 与可运行的 AI 系统",
@@ -98,6 +106,7 @@
         "做 ARM SME/SVE 上的高性能算子，也做能跑起来的 AI 系统。毕业于哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。",
       "hero.projects": "查看项目",
       "hero.email": "给我邮件",
+      "hero.bench": "跑个基准",
       "about.title": "关于",
       "about.lead":
         "在 ARM SME/SVE 上做 GEMM 与 Attention，也把 HPC、AI agent 和模型部署收成可以运行的系统。",
@@ -136,7 +145,14 @@
       "contact.title": "联系",
       "contact.eyebrow": "保持联系",
       "contact.lead": "有想法或想聊聊？<br>欢迎发来邮件。",
-      "footer.name": "侯宇腾 / Hou Yuteng"
+      "footer.name": "侯宇腾 / Hou Yuteng",
+      "footer.bench": "跑一个内核",
+      "footer.benchRun": "计算中…",
+      "footer.benchFmt": "{g} GFLOPS ≈ M4 单核 P-core 的 {p}%",
+      "footer.benchTip": "FP64 GEMM，N=384，3 次取最优，单线程标量 JavaScript——没有 SIMD，只有硬件峰值的几个百分点属正常。参照：M4 P-core FP64 峰值 ≈ 35 GFLOPS。",
+      "footer.term": "打开终端（或按 ~）",
+      "term.label": "终端",
+      "term.close": "关闭终端"
     }
   };
 
@@ -158,9 +174,12 @@
     }
   }
 
+  var current = "en";
+
   function apply(lang) {
-    var pack = STRINGS[lang] || STRINGS.en;
-    document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+    current = lang === "zh" ? "zh" : "en";
+    var pack = STRINGS[current] || STRINGS.en;
+    document.documentElement.lang = current === "zh" ? "zh-Hans" : "en";
 
     document.querySelectorAll("[data-i18n]").forEach(function (node) {
       var key = node.getAttribute("data-i18n");
@@ -185,9 +204,20 @@
     if (pack["meta.title"]) document.title = pack["meta.title"];
 
     document.querySelectorAll(".lang-switch button").forEach(function (button) {
-      button.setAttribute("aria-pressed", button.getAttribute("data-lang") === lang ? "true" : "false");
+      button.setAttribute("aria-pressed", button.getAttribute("data-lang") === current ? "true" : "false");
     });
+
+    document.dispatchEvent(new CustomEvent("site-lang", { detail: { lang: current } }));
   }
+
+  window.siteI18n = {
+    lang: function () {
+      return current;
+    },
+    t: function (key) {
+      return (STRINGS[current] || STRINGS.en)[key];
+    }
+  };
 
   var initial = readLang();
   try {
