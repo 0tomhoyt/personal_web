@@ -30,6 +30,7 @@
       "hero.projects": "View projects",
       "hero.email": "Email me",
       "hero.bench": "bench this device",
+      "hero.zoo": "kernel zoo",
       "about.title": "About",
       "about.lead":
         "GEMM and attention on ARM SME/SVE, and HPC, AI agents, and model deployment brought together into systems that run.",
@@ -73,6 +74,7 @@
       "contact.lead": "Have an idea, or want to talk?<br>Send a note.",
       "footer.name": "Hou Yuteng / 侯宇腾",
       "footer.bench": "run a kernel",
+      "footer.zoo": "kernel zoo",
       "footer.benchRun": "computing…",
       "footer.benchFmt": "{g} GFLOPS ≈ {p}% of an M4 P-core",
       "footer.benchTip": "FP64 GEMM, N=384, best of 3, single thread, scalar JavaScript — no SIMD, so a few percent of the hardware peak is normal. Reference: M4 P-core FP64 peak ≈ 35 GFLOPS.",
@@ -107,6 +109,7 @@
       "hero.projects": "查看项目",
       "hero.email": "给我邮件",
       "hero.bench": "跑个基准",
+      "hero.zoo": "算子动物园",
       "about.title": "关于",
       "about.lead":
         "在 ARM SME/SVE 上做 GEMM 与 Attention，也把 HPC、AI agent 和模型部署收成可以运行的系统。",
@@ -147,6 +150,7 @@
       "contact.lead": "有想法或想聊聊？<br>欢迎发来邮件。",
       "footer.name": "侯宇腾 / Hou Yuteng",
       "footer.bench": "跑一个内核",
+      "footer.zoo": "算子动物园",
       "footer.benchRun": "计算中…",
       "footer.benchFmt": "{g} GFLOPS ≈ M4 单核 P-core 的 {p}%",
       "footer.benchTip": "FP64 GEMM，N=384，3 次取最优，单线程标量 JavaScript——没有 SIMD，只有硬件峰值的几个百分点属正常。参照：M4 P-core FP64 峰值 ≈ 35 GFLOPS。",

@@ -1261,6 +1261,11 @@
     });
   }
 
+  /* visible entry points: the hero button and the footer link */
+  document.querySelectorAll("[data-zoo-open]").forEach(function (btn) {
+    btn.addEventListener("click", openZoo);
+  });
+
   document.addEventListener("site-lang", function () {
     applyLang();
     syncWhyLinks(null);
