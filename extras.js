@@ -95,7 +95,10 @@
         });
     }
     return chain.then(function () {
-      return { gflops: best, ok: checkDot(n, A2, B2, C2) };
+      var res = { gflops: best, ok: checkDot(n, A2, B2, C2) };
+      benchLast = res;
+      document.dispatchEvent(new CustomEvent("site-bench", { detail: res }));
+      return res;
     });
   }
 
@@ -114,6 +117,12 @@
   var benchBtns = Array.prototype.slice.call(document.querySelectorAll("[data-bench-label]"));
   var benchBusy = false;
   var benchLast = null;
+
+  /* the kernel zoo (zoo.js) reads the last bench result for its captions */
+  window.siteBench = {
+    run: runBench,
+    last: function () { return benchLast; }
+  };
 
   function refreshBenchUi() {
     benchBtns.forEach(function (btn) {
@@ -201,6 +210,7 @@
         "cat <file>        education.md · paper.md · contact.txt\n" +
         "neofetch          the machine introduces itself\n" +
         "gemm              run a small FP64 GEMM benchmark\n" +
+        "zoo               how three machines eat one GEMM\n" +
         "sudo <cmd>        try your luck\n" +
         "clear · exit      housekeeping",
       whoami: "guest (read-only access; curiosity assumed)",
@@ -230,6 +240,7 @@
       gemmCheck: "numerics: C[0,17] matches its dot-product reference",
       gemmCheckBad: "numerics: C[0,17] disagrees with its reference — JIT gremlins",
       gemmResult: "{g} GFLOPS ≈ {p}% of an M4 P-core (FP64 peak ≈ 35)",
+      zooLine: "opening the kernel zoo …",
       shellLine: "sh, emulated in good faith",
       memoryGuess: "{g} GB (browser's guess)",
       memoryQuiet: "not telling",
@@ -246,6 +257,7 @@
         "cat <文件>        education.md · paper.md · contact.txt\n" +
         "neofetch          让这台机器自我介绍\n" +
         "gemm              跑一个小的 FP64 GEMM 基准测试\n" +
+        "zoo               三台机器怎么吃同一个 GEMM\n" +
         "sudo <命令>       碰碰运气\n" +
         "clear · exit      收尾",
       whoami: "guest（只读权限；默认你有点好奇）",
@@ -275,6 +287,7 @@
       gemmCheck: "数值：C[0,17] 与点积参考值一致",
       gemmCheckBad: "数值：C[0,17] 与参考值不一致 —— JIT 的小妖精",
       gemmResult: "{g} GFLOPS ≈ M4 单核 P-core 的 {p}%（FP64 峰值 ≈ 35）",
+      zooLine: "正在打开算子动物园 …",
       shellLine: "sh，尽力模拟中",
       memoryGuess: "{g} GB（浏览器猜的）",
       memoryQuiet: "它不肯说",
@@ -466,6 +479,9 @@
         var v = benchNumbers(res);
         print(tt("gemmResult").replace("{g}", v.g).replace("{p}", v.p), "t-acc");
       });
+    } else if (cmd === "zoo") {
+      print(tt("zooLine"), "t-dim");
+      if (window.siteZoo && window.siteZoo.open) window.siteZoo.open();
     } else if (cmd === "clear") {
       termBody.innerHTML = "";
     } else if (cmd === "exit" || cmd === "quit" || cmd === "close" || cmd === ":q") {
