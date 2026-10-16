@@ -1,68 +1,83 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>侯宇腾 / Hou Yuteng · ARM 与可运行的 AI 系统</title>
-    <meta name="description" content="侯宇腾（Hou Yuteng），哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。方向是 ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
+    <title data-i18n="meta.title">Hou Yuteng · ARM kernels and AI systems that run</title>
+    <meta name="description" data-i18n-content="meta.description" content="Hou Yuteng (侯宇腾), Harbin Institute of Technology, Shenzhen, and KU Leuven (Cum Laude). GEMM and attention on ARM SME/SVE, plus HPC, AI agents, and model deployment.">
     <meta name="theme-color" content="#f2efe8">
     <link rel="canonical" href="https://personal-web-swart-zeta.vercel.app">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta property="og:title" content="侯宇腾 / Hou Yuteng">
-    <meta property="og:description" content="哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
+    <meta property="og:title" data-i18n-content="meta.ogTitle" content="Hou Yuteng">
+    <meta property="og:description" data-i18n-content="meta.ogDescription" content="Harbin Institute of Technology, Shenzhen, and KU Leuven (Cum Laude). GEMM and attention on ARM SME/SVE, plus HPC, AI agents, and model deployment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://personal-web-swart-zeta.vercel.app">
     <meta property="og:image" content="https://personal-web-swart-zeta.vercel.app/og.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="侯宇腾 / Hou Yuteng，ARM、HPC 与可运行的 AI 系统">
-    <meta property="og:locale" content="zh_CN">
-    <meta property="og:site_name" content="侯宇腾 / Hou Yuteng">
+    <meta property="og:image:alt" data-i18n-content="meta.ogAlt" content="Hou Yuteng — ARM, HPC, and AI systems that run">
+    <meta property="og:locale" data-i18n-content="meta.ogLocale" content="en_US">
+    <meta property="og:locale:alternate" data-i18n-content="meta.ogLocaleAlt" content="zh_CN">
+    <meta property="og:site_name" data-i18n-content="meta.siteName" content="Hou Yuteng">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="侯宇腾 / Hou Yuteng">
-    <meta name="twitter:description" content="ARM SME/SVE 上的 GEMM 与 Attention，以及 HPC、AI agent 和模型部署。">
+    <meta name="twitter:title" data-i18n-content="meta.ogTitle" content="Hou Yuteng">
+    <meta name="twitter:description" data-i18n-content="meta.twitterDescription" content="GEMM and attention on ARM SME/SVE, plus HPC, AI agents, and model deployment.">
     <meta name="twitter:image" content="https://personal-web-swart-zeta.vercel.app/og.png">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "侯宇腾",
-        "alternateName": "Hou Yuteng",
+        "name": "Hou Yuteng",
+        "alternateName": "侯宇腾",
         "url": "https://personal-web-swart-zeta.vercel.app",
         "email": "mailto:tomhoyt88@gmail.com",
         "sameAs": ["https://github.com/0tomhoyt"],
         "alumniOf": [
-          { "@type": "CollegeOrUniversity", "name": "哈尔滨工业大学（深圳）" },
+          { "@type": "CollegeOrUniversity", "name": "Harbin Institute of Technology, Shenzhen" },
           { "@type": "CollegeOrUniversity", "name": "KU Leuven" }
         ],
         "knowsAbout": ["ARM SME", "ARM SVE", "UniGEMM", "GEMM", "Attention", "HPC", "AI agents", "model deployment"]
       }
     </script>
+    <script>
+      try {
+        if (localStorage.getItem("site-lang") === "zh") {
+          document.documentElement.lang = "zh-Hans";
+          document.documentElement.classList.add("i18n-wait");
+        }
+      } catch (error) {}
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <a class="skip-link" href="#main">跳到主要内容</a>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to main content</a>
     <div class="page">
       <header class="site-header">
-        <a class="wordmark" href="#" aria-label="返回页面顶部">HY</a>
-        <nav aria-label="主导航">
-          <a href="#about">关于</a>
-          <a href="#projects">项目</a>
-          <a href="#contact">联系</a>
-        </nav>
+        <a class="wordmark" href="#" data-i18n-aria="nav.top" aria-label="Back to top">HY</a>
+        <div class="header-end">
+          <nav data-i18n-aria="nav.label" aria-label="Primary">
+            <a href="#about"><span data-i18n="nav.about">About</span></a>
+            <a href="#projects"><span data-i18n="nav.projects">Projects</span></a>
+            <a href="#contact"><span data-i18n="nav.contact">Contact</span></a>
+          </nav>
+          <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Language">
+            <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang="zh" lang="zh-Hans" aria-pressed="false">中文</button>
+          </div>
+        </div>
       </header>
 
       <main id="main">
         <section class="hero" aria-labelledby="page-title">
           <div class="hero-copy">
-            <p class="eyebrow">Personal website · 个人网站</p>
-            <h1 id="page-title">侯宇腾<span>Hou Yuteng</span></h1>
-            <p class="intro">做 ARM SME/SVE 上的高性能算子，也做能跑起来的 AI 系统。毕业于哈尔滨工业大学（深圳）与 KU Leuven（Cum Laude）。</p>
+            <p class="eyebrow" data-i18n="hero.eyebrow">Personal site</p>
+            <h1 id="page-title"><span class="name-primary" data-i18n="hero.name">Hou Yuteng</span><span class="name-secondary" data-i18n="hero.sub">侯宇腾</span></h1>
+            <p class="intro" data-i18n="hero.intro">High-performance kernels on ARM SME/SVE, and AI systems that actually run. Graduated from Harbin Institute of Technology, Shenzhen, and KU Leuven (Cum Laude).</p>
             <div class="hero-links">
-              <a class="button button-primary" href="#projects">查看项目</a>
-              <a class="button" href="mailto:tomhoyt88@gmail.com">给我邮件</a>
+              <a class="button button-primary" href="#projects"><span data-i18n="hero.projects">View projects</span></a>
+              <a class="button" href="mailto:tomhoyt88@gmail.com"><span data-i18n="hero.email">Email me</span></a>
             </div>
           </div>
           <div class="hero-mark" aria-hidden="true">
@@ -74,46 +89,46 @@
         <section class="section about" id="about" aria-labelledby="about-title">
           <div class="section-label">
             <p>01</p>
-            <h2 id="about-title">关于</h2>
+            <h2 id="about-title" data-i18n="about.title">About</h2>
           </div>
           <div class="section-content">
-            <p class="statement">在 ARM SME/SVE 上做 GEMM 与 Attention，也把 HPC、AI agent 和模型部署收成可以运行的系统。</p>
-            <ul class="focus-list" aria-label="关注方向">
+            <p class="statement" data-i18n="about.lead">GEMM and attention on ARM SME/SVE, and HPC, AI agents, and model deployment brought together into systems that run.</p>
+            <ul class="focus-list" data-i18n-aria="focus.label" aria-label="Focus areas">
               <li>
                 <span>01</span>
-                <strong>ARM / HPC</strong>
-                <p>SME/SVE 上的 UniGEMM、GEMM 与 Attention</p>
+                <strong data-i18n="focus.1.title">ARM / HPC</strong>
+                <p data-i18n="focus.1.body">UniGEMM, GEMM, and attention on SME/SVE</p>
               </li>
               <li>
                 <span>02</span>
-                <strong>AI Agent</strong>
-                <p>工具调用、远端执行与智能体工作流</p>
+                <strong data-i18n="focus.2.title">AI agents</strong>
+                <p data-i18n="focus.2.body">Tool use, remote execution, and agent workflows</p>
               </li>
               <li>
                 <span>03</span>
-                <strong>模型部署</strong>
-                <p>本地推理、ARM 平台与性能验证</p>
+                <strong data-i18n="focus.3.title">Model deployment</strong>
+                <p data-i18n="focus.3.body">Local inference, ARM platforms, and performance checks</p>
               </li>
             </ul>
             <div class="facts">
               <div>
-                <h3>教育</h3>
+                <h3 data-i18n="facts.education">Education</h3>
                 <ul>
-                  <li><span>2019–2024</span>哈尔滨工业大学（深圳） · 电子与信息工程学士</li>
-                  <li><span>2021–2023</span>KU Leuven · 工程科技学士，联合培养</li>
-                  <li><span>2023–2024</span>KU Leuven · 工程科技硕士，软件系统 · Cum Laude</li>
+                  <li><span>2019–2024</span><span data-i18n="edu.1">Harbin Institute of Technology, Shenzhen · B.Eng. in Electronics and Information Engineering</span></li>
+                  <li><span>2021–2023</span><span data-i18n="edu.2">KU Leuven · B.Sc. in Engineering Technology, joint program</span></li>
+                  <li><span>2023–2024</span><span data-i18n="edu.3">KU Leuven · M.Sc. in Engineering Technology, Software Systems · Cum Laude</span></li>
                 </ul>
               </div>
               <div>
-                <h3>经历</h3>
+                <h3 data-i18n="facts.experience">Experience</h3>
                 <ul>
-                  <li><span>2025–今</span>ARM SME/SVE 上的 UniGEMM / GEMM 与 Attention：多精度汇编生成，核心 GEMM 内核到理论峰值的 95% 以上，并优化多种 Attention 的访存与计算。</li>
-                  <li><span>同期</span>HPC 场景里的 MPI / UCX 性能工作，以及 KBLAS、Eigen 的维护。</li>
-                  <li><span>2023–2024</span>模型部署之后的稳定性：监控输入分布和输出异常，减少 concept drift。</li>
+                  <li><span data-i18n="exp.now">2025–present</span><span data-i18n="exp.1">UniGEMM, GEMM, and attention on ARM SME/SVE: multi-precision assembly generation, core GEMM kernels above 95% of theoretical peak, and memory-access and compute optimizations across several attention variants.</span></li>
+                  <li><span data-i18n="exp.same">Same period</span><span data-i18n="exp.2">MPI and UCX performance work in HPC settings, and maintenance of KBLAS and Eigen.</span></li>
+                  <li><span>2023–2024</span><span data-i18n="exp.3">Stability after model deployment: monitoring input distributions and output anomalies to reduce concept drift.</span></li>
                 </ul>
               </div>
               <div>
-                <h3>论文</h3>
+                <h3 data-i18n="facts.paper">Paper</h3>
                 <ul>
                   <li>
                     <a href="https://doi.org/10.56028/aemr.8.1.298.2023">Data Augmentation Using Language Models for Event-Driven Stock Prediction Sentiment Analysis</a>
@@ -128,19 +143,19 @@
         <section class="section" id="projects" aria-labelledby="projects-title">
           <div class="section-label">
             <p>02</p>
-            <h2 id="projects-title">项目</h2>
+            <h2 id="projects-title" data-i18n="projects.title">Projects</h2>
           </div>
           <div class="section-content">
             <div class="section-heading">
-              <p class="statement">一些公开项目</p>
-              <a href="https://github.com/0tomhoyt?tab=repositories">查看全部仓库 <span aria-hidden="true">↗</span></a>
+              <p class="statement" data-i18n="projects.lead">A few public projects</p>
+              <a href="https://github.com/0tomhoyt?tab=repositories"><span data-i18n="projects.all">View all repositories</span> <span aria-hidden="true">↗</span></a>
             </div>
             <div class="projects">
               <a class="project featured" href="https://github.com/0tomhoyt/cannbot-gateway-proxy">
                 <span class="project-number">01</span>
                 <div>
                   <h3>cannbot-gateway-proxy</h3>
-                  <p>把 CANNBot 网关收成本地 API。OpenAI 请求原样透传，Anthropic Messages 做双向翻译，调用时再注入凭证，本机 agent 不必把密钥写进配置。自带管理台，可看用量和 TTFT、TPOT 等延迟。</p>
+                  <p data-i18n="project.1">A local API in front of the CANNBot gateway. OpenAI requests pass through unchanged; Anthropic Messages are translated in both directions. Credentials are injected at call time, so a local agent does not keep secrets in its config. An admin console shows usage and latency such as TTFT and TPOT.</p>
                 </div>
                 <span class="project-meta">JavaScript <i aria-hidden="true">↗</i></span>
               </a>
@@ -148,7 +163,7 @@
                 <span class="project-number">02</span>
                 <div>
                   <h3>cpu_model_deploy</h3>
-                  <p>Qwen3.6-35B-A3B 在鲲鹏 920（ARM CPU）上的离线部署。基于 llama.cpp 编译运行，不依赖 Python。</p>
+                  <p data-i18n="project.2">Offline deployment of Qwen3.6-35B-A3B on the Kunpeng 920 (ARM CPU). Built and run with llama.cpp, with no Python runtime.</p>
                 </div>
                 <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
               </a>
@@ -156,7 +171,7 @@
                 <span class="project-number">03</span>
                 <div>
                   <h3>agent_remote</h3>
-                  <p>给 AI 辅助开发用的远端执行框架。编译机提交任务和产物，执行机上的 worker 拉取运行并回传日志；两边网络不通时，用中转队列接力。</p>
+                  <p data-i18n="project.3">A remote-execution framework for AI-assisted development. The build machine submits tasks and artifacts; a worker on the execution machine pulls them, runs them, and returns logs. When the two sides cannot reach each other, a relay queue carries the handoff.</p>
                 </div>
                 <span class="project-meta">Python <i aria-hidden="true">↗</i></span>
               </a>
@@ -164,7 +179,7 @@
                 <span class="project-number">04</span>
                 <div>
                   <h3>gemmtest</h3>
-                  <p>核对 ARM 上 GEMM 的数值是否正确。同一套代码覆盖 macOS 开发机和 ARM64 服务器，可用编译开关切到 HBM，对照 FP32、FP16 和 BF16。</p>
+                  <p data-i18n="project.4">Numerical checks for GEMM on ARM. One codebase covers macOS development machines and ARM64 servers, with a compile-time switch for HBM and comparisons across FP32, FP16, and BF16.</p>
                 </div>
                 <span class="project-meta">C++ <i aria-hidden="true">↗</i></span>
               </a>
@@ -172,7 +187,7 @@
                 <span class="project-number">05</span>
                 <div>
                   <h3>LLM_papers</h3>
-                  <p>按主题整理的大模型论文中文阅读笔记，从综述写到架构与训练，并解释难懂的概念。</p>
+                  <p data-i18n="project.5">Chinese reading notes on large-model papers, arranged by topic — from surveys through architecture and training — with explanations of the harder ideas.</p>
                 </div>
                 <span class="project-meta">Notes <i aria-hidden="true">↗</i></span>
               </a>
@@ -180,7 +195,7 @@
                 <span class="project-number">06</span>
                 <div>
                   <h3>agent_knowledge</h3>
-                  <p>中文技术笔记库。同一主题按设计说明、大纲和成稿分层；目前写的是 Agent 时代的 CPU 底层软件，数字带出处。</p>
+                  <p data-i18n="project.6">A library of Chinese technical notes. Each topic is layered as a design note, an outline, and a finished draft. The current subject is low-level CPU software in the agent era, with figures cited to their sources.</p>
                 </div>
                 <span class="project-meta">HTML <i aria-hidden="true">↗</i></span>
               </a>
@@ -191,11 +206,11 @@
         <section class="section contact" id="contact" aria-labelledby="contact-title">
           <div class="section-label">
             <p>03</p>
-            <h2 id="contact-title">联系</h2>
+            <h2 id="contact-title" data-i18n="contact.title">Contact</h2>
           </div>
           <div class="section-content contact-content">
-            <p class="eyebrow">Say hello · 保持联系</p>
-            <p class="contact-title">有想法或想聊聊？<br>欢迎发来邮件。</p>
+            <p class="eyebrow" data-i18n="contact.eyebrow">Say hello</p>
+            <p class="contact-title" data-i18n-html="contact.lead">Have an idea, or want to talk?<br>Send a note.</p>
             <a class="email" href="mailto:tomhoyt88@gmail.com">tomhoyt88@gmail.com <span aria-hidden="true">↗</span></a>
             <a class="github-link" href="https://github.com/0tomhoyt" rel="me">GitHub · @0tomhoyt <span aria-hidden="true">↗</span></a>
           </div>
@@ -203,9 +218,10 @@
       </main>
 
       <footer>
-        <p>侯宇腾 / Hou Yuteng</p>
+        <p data-i18n="footer.name">Hou Yuteng / 侯宇腾</p>
         <p>Designed with restraint · 2026</p>
       </footer>
     </div>
+    <script src="i18n.js"></script>
   </body>
 </html>
