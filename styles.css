@@ -403,6 +403,76 @@ h1 span {
   font-style: normal;
 }
 
+.facts {
+  margin: 3.25rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.facts h3 {
+  margin: 0.2rem 0 0;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.facts ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.facts li + li {
+  margin-top: 0.7rem;
+}
+
+.facts li:has(span) {
+  display: grid;
+  grid-template-columns: 5.6rem minmax(0, 1fr);
+  column-gap: 0.65rem;
+  align-items: baseline;
+}
+
+.facts li span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.facts a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.facts a:hover,
+.facts a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+.facts small {
+  display: block;
+  margin-top: 0.28rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
 .contact {
   padding-bottom: 7.5rem;
 }
@@ -521,6 +591,11 @@ footer p {
     margin-top: 1.2rem;
   }
 
+  .facts > div {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
   .project {
     grid-template-columns: 1.4rem minmax(0, 1fr);
     gap: 0.8rem;
@@ -549,6 +624,11 @@ footer p {
 
   .intro {
     font-size: 1.25rem;
+  }
+
+  .facts li:has(span) {
+    grid-template-columns: 1fr;
+    row-gap: 0.1rem;
   }
 
   footer {
